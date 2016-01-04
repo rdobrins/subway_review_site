@@ -140,13 +140,10 @@ GEM
     rake (10.4.2)
     rdoc (4.2.1)
       json (~> 1.4)
-<<<<<<< HEAD
-=======
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
->>>>>>> a9ba08bc747da5849fcf04cd51740a09034c8211
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -176,14 +173,11 @@ GEM
       rdoc (~> 4.0)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
-<<<<<<< HEAD
-=======
     simplecov (0.11.1)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
->>>>>>> a9ba08bc747da5849fcf04cd51740a09034c8211
     slop (3.6.0)
     spring (1.6.1)
     sprockets (3.5.2)
@@ -204,12 +198,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-<<<<<<< HEAD
-=======
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
->>>>>>> a9ba08bc747da5849fcf04cd51740a09034c8211
     valid_attribute (2.0.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
@@ -226,10 +217,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.1.0)
-<<<<<<< HEAD
-=======
   coveralls
->>>>>>> a9ba08bc747da5849fcf04cd51740a09034c8211
   factory_girl
   foundation-rails
   jbuilder (~> 2.0)
