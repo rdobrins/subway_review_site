@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="row">
+    <% flash.each do |key, value| %>
+      <div data-alert class="alert-box radius flash <%= key %>">
+        <%= value %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+  </div>
 <%= yield %>
 
 </body>
