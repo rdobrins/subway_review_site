@@ -1,3 +1,13 @@
+<h1>This is the homepage for our site!</h1>
+
+<h2>STATIONS LIST!</h2>
+
+<ul>
+  <% @stations.each do |station| %>
+  <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+  <% end %>
+</ul>
+
 <nav>
   <ul>
     <li><%= link_to 'Sign Up', new_user_registration_path %></li>
@@ -12,3 +22,5 @@
     </div>
   <% end %>
 </div>
+
+<%= link_to "Add New Station", new_station_path %>
