@@ -6,6 +6,6 @@ class Station < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-  validates :zip, length: { is: 5}
+  validates :zip, length: { is: 5 }
   validates :zip, numericality: { only_integer: true }
 end
