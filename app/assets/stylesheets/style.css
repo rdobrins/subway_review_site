@@ -1,0 +1,62 @@
+.blueback {
+  background-color: #33d6ff;
+}
+
+.greyback {
+  background-color: #383838;
+}
+
+.white-font {
+  color: #f8f8f9;
+}
+
+.add_padding {
+  padding: 1.5rem;
+}
+
+.back-img-size {
+    height: 24rem;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#laptop {
+    margin: auto;
+    width: 60%;
+}
+
+#lap-back {
+  height: 48rem;
+  width: 100%;
+  background-color: #f8f8f9;
+}
+
+.back-space {
+  height: 30rem;
+}
+
+.hire-part {
+  background-color: #1c2224;
+}
+
+.cont-us {
+  background-color: #E5F3F4;
+}
+
+.partners {
+
+  position: relative;
+  top: 40%;
+
+  margin: 0 auto;
+  text-align: left;
+
+}
+
+.each-partner {
+  background-color: #4B4B4B;
+}
+
+#partners_font_color {
+  color: #CCCCCC;
+}
