@@ -5,10 +5,14 @@ RSpec.describe User, type: :model do
   ln = "Jonas"
   email = 'a@b.com'
   p1 = "password"
-  user1 = User.new(first_name: fn, last_name: ln, email: email, password: p1, password_confirmation: p1)
-  user2 = User.new(first_name: nil, last_name: ln, email: email, password: p1, password_confirmation: p1)
-  user3 = User.new(first_name: fn, last_name: nil, email: email, password: p1, password_confirmation: p1)
-  user4 = User.new(first_name: fn, last_name: ln, email: 'what@com', password: p1, password_confirmation: p1)
+  user1 = User.new(first_name: fn, last_name: ln, email: email, password: p1,
+                   password_confirmation: p1)
+  user2 = User.new(first_name: nil, last_name: ln, email: email, password: p1,
+                   password_confirmation: p1)
+  user3 = User.new(first_name: fn, last_name: nil, email: email, password: p1,
+                   password_confirmation: p1)
+  user4 = User.new(first_name: fn, last_name: ln, email: 'what@com',
+                   password: p1, password_confirmation: p1)
   it 'has correct information' do
     expect(user1).to be_valid
   end

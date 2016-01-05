@@ -1,7 +1,7 @@
 require 'spec_helper'
 # User Authentication Tests
 
-# [] As a user I want to be able to sign up
+# [X] As a user I want to be able to sign up
 
 feature 'sign up' do
 
@@ -16,7 +16,6 @@ feature 'sign up' do
     click_on 'Sign up'
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
-    #expect(page).to have_content("Sign Out")
   end
   scenario 'required information is not supplied' do
     visit root_path
@@ -24,7 +23,6 @@ feature 'sign up' do
     click_on 'Sign up'
 
     expect(page).to have_content("Please review the problems below:")
-    #expect(page).to have_content("Sign In")
   end
   scenario 'password confirmation does not match confirmation' do
     visit root_path
@@ -37,6 +35,5 @@ feature 'sign up' do
     click_on 'Sign up'
 
     expect(page).to have_content("doesn't match Password")
-#    expect(page).to have_content("Sign In")
   end
 end
