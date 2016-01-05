@@ -11,6 +11,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'foundation-rails'
 
+gem 'simple_form'
+gem 'devise'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -20,6 +23,8 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'byebug'
+
+  gem 'quiet_assets'
 end
 
 group :test do
