@@ -1,5 +1,4 @@
 class StationsController < ApplicationController
-
   def index
     @stations = Station.all
   end
@@ -12,5 +11,4 @@ class StationsController < ApplicationController
 
   def create
   end
-
 end

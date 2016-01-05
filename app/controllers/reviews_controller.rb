@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def index
   end
 
@@ -8,6 +7,4 @@ class ReviewsController < ApplicationController
 
   def create
   end
-
-
 end
