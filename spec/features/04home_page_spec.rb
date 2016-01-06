@@ -12,7 +12,12 @@ feature 'view home page with list and adding to it' do
   end
 
   scenario 'adding station to the station list' do
+    user1 = FactoryGirl.create(:user)
     visit root_path
+    click_link "Sign In"
+    fill_in 'Email', with: user1.email
+    fill_in 'Password', with: user1.password
+    click_button "Log in"
     click_link 'Add New Station'
     fill_in 'Name', with: 'Main Station'
     fill_in 'Address', with: '123 Main Street'
