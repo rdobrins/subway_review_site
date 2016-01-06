@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20160105185430) do
   enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
-    t.string  "rating",     null: false
+    t.string  "rating",                 null: false
     t.text    "body"
-    t.integer "up_votes",   null: false
-    t.integer "down_votes", null: false
-    t.integer "user_id",    null: false
-    t.integer "station_id", null: false
+    t.integer "up_votes",   default: 0, null: false
+    t.integer "down_votes", default: 0, null: false
+    t.integer "user_id",                null: false
+    t.integer "station_id",             null: false
   end
 
   create_table "stations", force: :cascade do |t|

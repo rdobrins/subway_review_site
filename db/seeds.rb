@@ -13,3 +13,10 @@ Station.create(
   state: "MA",
   zip: "01234"
 )
+
+User.create(
+  first_name: "Bob",
+  last_name: "Saget",
+  email: "b@gmail.com",
+  password: "password"
+)

@@ -5,6 +5,7 @@ class StationsController < ApplicationController
 
   def show
     @station = Station.find(params[:id])
+    @reviews = @station.reviews
   end
 
   def new
