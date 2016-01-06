@@ -1,1 +1,13 @@
 <h1>This is where we'll create new reviews!</h1>
+
+<%= form_for [@station, @review] do |f| %>
+  <%= f.label :rating, "Rating - Required" %>
+  <%= f.text_field :rating %>
+    </br>
+  <%= f.label :body, "Review" %>
+  <%= f.text_field :body %>
+    </br>
+  <%= f.submit "Add Review" %>
+<% end %>
+
+<%= link_to "Back to station page", station_path(@station) %>

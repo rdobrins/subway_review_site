@@ -10,5 +10,6 @@
   <h5> State: <%= @station.state %> </h5>
   <h5> Zip Code: <%= @station.zip %> </h5>
 
-
+<%= link_to "Add Review", new_station_review_path(@station) %>
+  </br>
 <%= link_to "Back to Home Page", root_path %>
