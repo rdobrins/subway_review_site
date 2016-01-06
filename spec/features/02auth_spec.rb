@@ -10,7 +10,6 @@ feature 'sign in and sign out' do
     click_link 'Sign In'
     fill_in 'Email', with: 'newton@issac.law'
     fill_in 'Password', with: 'password', match: :prefer_exact
-    # fill_in 'Password confirmation', with: 'password'
     click_on 'Log in'
 
     expect(page).to have_content("Signed in successfully.")
@@ -20,7 +19,6 @@ feature 'sign in and sign out' do
     click_link 'Sign In'
     fill_in 'Email', with: 'newton@issac.law'
     fill_in 'Password', with: 'passwordwrong', match: :prefer_exact
-    # fill_in 'Password confirmation', with: 'password'
     click_on 'Log in'
 
     expect(page).to have_content("Invalid email or password.")
@@ -30,7 +28,6 @@ feature 'sign in and sign out' do
     click_link 'Sign In'
     fill_in 'Email', with: 'newton@issac.law'
     fill_in 'Password', with: 'password', match: :prefer_exact
-    # fill_in 'Password confirmation', with: 'password'
     click_on 'Log in'
 
     visit root_path
@@ -42,7 +39,6 @@ feature 'sign in and sign out' do
     click_link 'Sign In'
     fill_in 'Email', with: 'newton@issac.law'
     fill_in 'Password', with: 'password', match: :prefer_exact
-    # fill_in 'Password confirmation', with: 'password'
     click_on 'Log in'
 
     visit root_path
