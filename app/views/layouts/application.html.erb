@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>SubwayReviewSite</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="row">
-    <% flash.each do |key, value| %>
-      <div data-alert class="alert-box radius flash <%= key %>">
-        <%= value %>
-        <a href="#" class="close">&times;</a>
-      </div>
-    <% end %>
-  </div>
-<%= yield %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Subway Station Reviews</a></h1>
+        </li>
+      </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#">Right Button Dropdown</a>
+        <ul class="dropdown">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'Edit Info', edit_user_registration_path%></li>
+          <% else %>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+          <li><a href="#">First link in dropdown</a></li>
+          <li class="active"><a href="#">Active link in dropdown</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</nav>
+    <div class="row">
+      <% flash.each do |key, value| %>
+        <div data-alert class="alert-box radius flash <%= key %>">
+          <%= value %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+    </div>
+    <%= yield %>
+
+  </body>
 </html>
