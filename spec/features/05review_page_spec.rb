@@ -19,7 +19,6 @@ feature 'view station page with review button and go to review page' do
     click_link station3.name
     click_link "Add Review"
 
-
     expect(page).to have_content("Rating")
     expect(page).to have_content("Review")
   end
