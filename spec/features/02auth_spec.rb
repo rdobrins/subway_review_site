@@ -1,7 +1,7 @@
 require 'spec_helper'
 # User Authentication Tests
 
-# [X] As a user I want to be able to sign up
+# [X] As a user I want to be able to sign in/out
 
 feature 'sign in and sign out' do
 
