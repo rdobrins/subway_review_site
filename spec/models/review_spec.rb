@@ -1,16 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:review) {
-        Review.new(
-          user_id: 1,
-          station_id: 1,
-          rating: 1,
-          up_votes: 2,
-          down_votes: 1,
-          body: "Here is an amazing review for a below average station!"
-        )
-      }
+  let(:review) { FactoryGirl.create(:review) }
   before(:each) do
     review
   end
