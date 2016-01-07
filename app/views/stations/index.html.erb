@@ -1,15 +1,30 @@
+<div class="centered">
+  <h1 class="HomeHeader">A Review Site for
+    <a id="subway-link" href="http://www.subway.com/subwayroot/default.aspx">
+      <img id="hometextpic" src="http://i.imgur.com/Q0bbkv1.png"/>
+    </a>
+  Stations!</h1>
+</div>
 
-<h1 class="HomeHeader">A Review Site for Subway Stations!</h1>
+<div class="homepic">
+  <img
+  src="http://subwaynut.com/mbta/green_line/kenmore/kenmore13.jpg"
+  alt="http://cdn1.bostonmagazine.com/wp-content/uploads/2013/09/BUja1GeCAAEQISH.jpg-large.jpeg"
+  />
+</div>
 
-<h2 class="StationsHeader">Stations</h2>
+<div class="stations-list">
 
+    <h2 class="StationsHeader">Stations</h2>
 
-<ul>
-  <% @stations.each do |station| %>
-  <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
-  <% end %>
-</ul>
+    <ul>
+      <% @stations.each do |station| %>
+      <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+      <% end %>
+    </ul>
 
-<% if user_signed_in? %>
-  <%= link_to "Add New Station", new_station_path %>
-<% end %>
+    <% if user_signed_in? %>
+      <%= link_to "Add New Station", new_station_path %>
+    <% end %>
+
+</div>

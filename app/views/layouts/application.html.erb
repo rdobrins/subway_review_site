@@ -16,7 +16,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/">Subway Station Reviews</a></h1>
+          <h1><a id="home-compass" href="/"><strong>Subway Station Reviews</strong></a></h1>
         </li>
       </ul>
 
@@ -25,11 +25,11 @@
     <ul class="right">
       <li class="has-dropdown">
         <% if user_signed_in? %>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Edit Info', edit_user_registration_path%></li>
+          <li class="green-background"><strong><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></strong></li>
+          <li class="green-background"><strong><%= link_to 'Edit Info', edit_user_registration_path%></strong></li>
         <% else %>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class="green-background"><strong><%= link_to 'Sign In', new_user_session_path %></strong></li>
+          <li class="green-background"><strong><%= link_to 'Sign Up', new_user_registration_path %></strong></li>
         <% end %>
       </li>
     </ul>
