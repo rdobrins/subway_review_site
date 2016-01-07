@@ -43,7 +43,7 @@ feature 'view station page with review button and go to review page' do
     click_button "Log in"
     click_link station3.name
     click_link "Add Review"
-    fill_in 'Rating - Required', with: 4
+    select(5, from: "Rating - Required")
     fill_in 'Review', with: "This review"
     click_button "Add Review"
 
