@@ -4,7 +4,7 @@
 
   <%= form_for [@station, @review] do |f| %>
     <%= f.label :rating, "Rating - Required" %>
-    <%= f.text_field :rating %>
+    <%= f.select(:rating, (1..5).to_a.reverse) %>
       </br>
     <%= f.label :body, "Review" %>
     <%= f.text_field :body %>
