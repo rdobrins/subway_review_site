@@ -6,4 +6,6 @@ class Review < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: :station_id }
   validates :rating, numericality: true
   validates :rating, inclusion: { in: (1..5) }
+  
+  paginates_per 10
 end
