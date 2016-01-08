@@ -29,7 +29,7 @@ feature 'view home page with list and adding to it' do
     expect(page).to have_content("Main Station")
   end
   scenario 'pagination works as intended' do
-    20.times do |i|
+    20.times do ||
       FactoryGirl.create(:station)
     end
     visit root_path

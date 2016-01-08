@@ -8,6 +8,5 @@ class Station < ActiveRecord::Base
   validates :zip, presence: true
   validates :zip, length: { is: 5 }
   validates :zip, numericality: { only_integer: true }
-
   paginates_per 10
 end
