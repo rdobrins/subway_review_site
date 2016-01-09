@@ -16,13 +16,21 @@
 <% end %>
 
   </br></br>
-  
+
 <%= link_to "Back to Home Page", root_path %>
 
 <ol>
 
 <% @reviews.each do |review| %>
   <li><%= review.body %></li>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>
 <% end %>
 
 </ol>
+<div>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Delete Station', station_path(@station), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>
+</div>

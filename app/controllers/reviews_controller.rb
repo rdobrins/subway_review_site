@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+  before_action :authorize_user, except: [:index, :show, :new, :create]
+
   def index
   end
 
@@ -23,9 +26,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @station = Station.find(params[:station_id])
+    Review.find(params[:id]).destroy
+    redirect_to station_path(@station)
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:rating, :body, :station_id, :user_id)
   end
+
 end

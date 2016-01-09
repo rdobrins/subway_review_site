@@ -20,3 +20,11 @@ User.create(
   email: "b@gmail.com",
   password: "password"
 )
+
+User.create(
+  first_name: "Test",
+  last_name: "Admin",
+  email: "admin@gmail.com",
+  password: "password",
+  role: "admin"
+)

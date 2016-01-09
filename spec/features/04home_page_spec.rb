@@ -29,4 +29,8 @@ feature 'view home page with list and adding to it' do
     expect(page).to have_content("Main Station")
   end
 
+  scenario 'unauthenticated user adding station to the station list' do
+    expect{visit new_station_path}.to raise_error(ActionController::RoutingError)
+  end
+
 end

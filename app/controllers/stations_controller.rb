@@ -1,4 +1,7 @@
 class StationsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :new, :create]
+
   def index
     @stations = Station.all
   end
@@ -20,6 +23,11 @@ class StationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    Station.find(params[:id]).destroy
+    redirect_to stations_path
   end
 
   private
