@@ -53,7 +53,7 @@ feature 'view station page with review button and go to review page' do
   scenario 'unauthenticated user adding review' do
     station4 = FactoryGirl.create(:station)
     expect { visit new_station_review_path(station4) }.to raise_error(
-                                                ActionController::RoutingError)
+      ActionController::RoutingError)
   end
 
 end
