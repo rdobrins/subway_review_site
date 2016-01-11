@@ -99,6 +99,18 @@ ul {
   margin-left: 3rem;
 }
 
+.inline {
+  padding-right: 2rem;
+  display: inline-block;
+}
+
+#img-size {
+  height: auto;
+  width: auto;
+  max-width: 45px;
+  max-height: 45px;
+}
+
 #hometextpic {
   height: 3.75rem;
   padding-bottom: .75rem;

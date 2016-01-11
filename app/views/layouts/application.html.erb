@@ -20,21 +20,28 @@
         </li>
       </ul>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="has-dropdown">
-        <% if user_signed_in? %>
-          <li class="green-background"><strong><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></strong></li>
-          <li class="green-background"><strong><%= link_to 'Edit Info', edit_user_registration_path%></strong></li>
-        <% else %>
-          <li class="green-background"><strong><%= link_to 'Sign In', new_user_session_path %></strong></li>
-          <li class="green-background"><strong><%= link_to 'Sign Up', new_user_registration_path %></strong></li>
-        <% end %>
-      </li>
-    </ul>
-  </section>
-</nav>
+      <section class="top-bar-section">
+      <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <% if user_signed_in? %>
+              <li><% if @user.avatar.nil? == false%>
+                <div class="inline"> <img id="img-size" src="<%= @user.avatar.url %>"/>
+                </div>
+                <div class="inline">
+                  Signed in as: <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+                </div>
+              <% end %></li>
+              <li class="green-background"><strong><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></strong></li>
+              <li class="green-background"><strong><%= link_to 'Edit Info', edit_user_registration_path%></strong></li>
+            <% else %>
+              <li class="green-background"><strong><%= link_to 'Sign In', new_user_session_path %></strong></li>
+              <li class="green-background"><strong><%= link_to 'Sign Up', new_user_registration_path %></strong></li>
+            <% end %>
+          </li>
+      </ul>
+    </section>
+    </nav>
     <div class="row">
       <% flash.each do |key, value| %>
         <div data-alert class="alert-box radius flash <%= key %>">
@@ -43,6 +50,7 @@
         </div>
       <% end %>
     </div>
+
     <%= yield %>
 
   </body>
