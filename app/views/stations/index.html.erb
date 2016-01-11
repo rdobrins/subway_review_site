@@ -22,6 +22,8 @@
       <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
       <% end %>
     </ul>
+    
+    <%= paginate @stations %>
 
     <% if user_signed_in? %>
       <%= link_to "Add New Station", new_station_path %>

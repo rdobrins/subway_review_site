@@ -1,10 +1,12 @@
-Station.create(
-  name: "Chinatown Station",
-  address: "33 Harrison Ave",
-  city: "Boston",
-  state: "MA",
-  zip: "02134"
-)
+30.times do |i|
+  Station.create(
+    name: "Chinatown Station #{i}",
+    address: "33 Harrison Ave",
+    city: "Boston",
+    state: "MA",
+    zip: "02134"
+  )
+end
 
 Station.create(
   name: "Arlington Station",

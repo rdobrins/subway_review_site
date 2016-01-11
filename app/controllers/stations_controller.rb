@@ -3,7 +3,7 @@ class StationsController < ApplicationController
   before_action :authorize_user, except: [:index, :show, :new, :create]
 
   def index
-    @stations = Station.all
+    @stations = Station.page params[:page]
   end
 
   def show
