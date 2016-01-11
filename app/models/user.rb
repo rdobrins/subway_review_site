@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :reviews
+  has_many :votes
+
   devise :database_authenticatable,
     :registerable,
     :recoverable,
@@ -11,4 +14,8 @@ class User < ActiveRecord::Base
   validates :email, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   mount_uploader :avatar, AvatarUploader
+
+  def admin?
+    role == "admin"
+  end
 end

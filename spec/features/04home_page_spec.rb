@@ -29,4 +29,19 @@ feature 'view home page with list and adding to it' do
     expect(page).to have_content("Main Station")
   end
 
+  scenario 'unauthenticated user adding station to the station list' do
+    expect { visit new_station_path }.to raise_error(
+      ActionController::RoutingError)
+  end
+
+  scenario 'pagination works as intended' do
+    20.times do ||
+      FactoryGirl.create(:station)
+    end
+    visit root_path
+    expect(page).to have_content("Chinatown5")
+    expect(page).to_not have_content("Chinatown15")
+    click_link "Next"
+    expect(page).to have_content("Chinatown15")
+  end
 end

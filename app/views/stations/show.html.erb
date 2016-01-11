@@ -6,6 +6,7 @@
 <h5> City: <%= @station.city %> </h5>
 <h5> State: <%= @station.state %> </h5>
 <h5> Zip Code: <%= @station.zip %> </h5>
+<h5> Rating: <%= @station.average_rating %> </h5>
 
   </br></br>
 
@@ -15,15 +16,34 @@
 
   </br></br>
 
-
 <h2>Reviews:</h2>
   </br>
 <ol>
 
 <% @reviews.each do |review| %>
   <li><%= review.body %></li>
+  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
+    <div class="upvote" id="upvote">
+      <%= button_to "upvote", station_review_path(@station,review), method:"patch", params: {up: true}%>
+    </div>
+    <div class="downvote" id="downvote">
+      <%= button_to "downvote", station_review_path(@station,review), method:"patch", params: {up: false}%>
+    </div>
+    <%= review.body %>
+    Upvotes: <%= review.up_votes%>
+    Downvotes: <%= review.down_votes%>
+  </div>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>
 <% end %>
 
 </ol>
 
 <%= link_to "Back to Home Page", root_path %>
+
+<div>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Delete Station', station_path(@station), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>
+</div>
