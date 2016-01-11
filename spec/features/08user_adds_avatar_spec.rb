@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 feature 'view index page see avatar' do
 
   scenario 'user edits info and adds avatar' do
@@ -13,9 +12,8 @@ feature 'view index page see avatar' do
     click_link "Edit Info"
     fill_in 'Email', with: user1.email
     fill_in 'Current password', with: user1.password
-    page.attach_file("Avatar","#{Rails.root}/public/uploads/subwaylogo.png")
+    page.attach_file("Avatar", "#{Rails.root}/public/uploads/subwaylogo.png")
     click_button 'Update'
-
 
     expect(page).to have_content("Your account has been updated successfully.")
 
@@ -29,9 +27,8 @@ feature 'view index page see avatar' do
     fill_in 'Email', with: "tom@ryan.com"
     fill_in 'Password', with: "password", match: :prefer_exact
     fill_in 'Password confirmation', with: "password"
-    page.attach_file("Avatar","#{Rails.root}/public/uploads/subwaylogo.png")
+    page.attach_file("Avatar", "#{Rails.root}/public/uploads/subwaylogo.png")
     click_button 'Sign up'
-
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
 
