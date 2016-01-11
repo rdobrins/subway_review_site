@@ -1,5 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :station
+  belongs_to :user
+  has_many :votes
 
   validates :user_id, presence: true
   validates :station_id, presence: true
