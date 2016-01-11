@@ -23,6 +23,16 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand" id="search-button">Search</a>
+          </div>
+        </div>
+      </li>
       <li class="has-dropdown">
         <% if user_signed_in? %>
           <li class="green-background"><strong><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></strong></li>
