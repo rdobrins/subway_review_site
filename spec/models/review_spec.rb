@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Review, type: :model do
   let(:review) { FactoryGirl.create(:review) }
   before(:each) do
     review
