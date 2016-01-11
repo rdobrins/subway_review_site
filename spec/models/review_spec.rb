@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Review, type: :model do
   let(:review) { FactoryGirl.create(:review) }
   before(:each) do
     review
@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
     review1 = FactoryGirl.create(:review)
     review2 = FactoryGirl.create(:review)
     review1.user_id = review.user_id
-    review2.user_id = 2
+    review1.station_id = review.station_id
     expect(review1).to_not be_valid
     expect(review2).to be_valid
   end
