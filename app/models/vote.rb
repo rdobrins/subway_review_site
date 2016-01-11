@@ -5,5 +5,5 @@ class Vote < ActiveRecord::Base
   validates :user_id, presence: true
   validates :review_id, presence: true
   validates :user_id, uniqueness: { scope: :review_id }
-  validates :up, :inclusion => {:in => [true, false]}
+  validates :up, inclusion: { in: [true, false] }
 end

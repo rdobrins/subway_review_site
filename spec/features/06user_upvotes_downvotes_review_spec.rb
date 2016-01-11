@@ -30,7 +30,7 @@ feature 'station show page has upvote/downvote buttons for reviews' do
     page.find_by_id("review-#{@review.id}").find_button("upvote").click
     page.find_by_id("review-#{@review.id}").find_button("downvote").click
     expect(page).to have_content("Downvotes: 1")
-        expect(page).to have_content("Upvotes: 0")
+    expect(page).to have_content("Upvotes: 0")
   end
 
   scenario 'user upvotes a post they currently have downvoted' do
