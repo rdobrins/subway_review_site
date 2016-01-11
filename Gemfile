@@ -14,6 +14,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'kaminari'
+gem 'mailcatcher'
 
 group :development, :test do
   gem 'pry-rails'
