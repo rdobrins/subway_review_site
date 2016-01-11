@@ -13,12 +13,9 @@ gem 'foundation-rails'
 
 gem 'simple_form'
 gem 'devise'
-<<<<<<< HEAD
 gem 'carrierwave'
 gem 'fog'
-=======
 gem 'kaminari'
->>>>>>> 90834b90cce204eacd7df3c15fef128cec95110d
 
 group :development, :test do
   gem "dotenv-rails"
