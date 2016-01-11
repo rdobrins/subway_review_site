@@ -21,7 +21,6 @@ class Station < ActiveRecord::Base
       total += rat
     end
 
-    average = (total / ratings.length.to_f).round(1)
-
+    (total / ratings.length.to_f).round(1)
   end
 end
