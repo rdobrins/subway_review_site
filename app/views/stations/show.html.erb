@@ -23,15 +23,20 @@
 
 <% @reviews.each do |review| %>
   <div class="review-<%=review.id%>" id="review-<%=review.id%>">
-    <div class="upvote" id="upvote">
-      <%= button_to "upvote", station_review_path(@station,review), method:"patch", params: {up: true}%>
-    </div>
-    <div class="downvote" id="downvote">
-      <%= button_to "downvote", station_review_path(@station,review), method:"patch", params: {up: false}%>
-    </div>
+
+    <%= "(#{review.rating}/5) #{review.user.email} says:" %>
     <%= review.body %>
-    Upvotes: <%= review.up_votes%>
-    Downvotes: <%= review.down_votes%>
+    <div class="votes">
+      Upvotes: <%= review.up_votes%>
+      Downvotes: <%= review.down_votes%>
+    </div>
+
+    <div class="vote" id="vote">
+      <%= button_to "upvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote" id="vote">
+      <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
   </div>
 <% end %>
 

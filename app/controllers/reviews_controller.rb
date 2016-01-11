@@ -55,7 +55,14 @@ class ReviewsController < ApplicationController
       end
     end
     @review.save
-    redirect_to station_path(@station)
+
+    # render json: @review
+
+    respond_to do |format|
+      format.html { redirect_to station_path(@station) }
+      format.js { render json: @review }
+    end
+
   end
   private
 
