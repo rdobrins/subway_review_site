@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'stations#index'
 
-  resources :stations, only: [:new, :index, :create, :show, :destroy] do
-    resources :reviews, only: [:new, :create, :index, :update, :show, :destroy]
+  resources :stations, except: [:edit] do
+    resources :reviews, except: [:edit]
   end
 
 end
