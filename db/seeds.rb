@@ -24,3 +24,11 @@ Station.create(
   zip: "01234",
   user_id: 1
 )
+
+User.create(
+  first_name: "Test",
+  last_name: "Admin",
+  email: "admin@gmail.com",
+  password: "password",
+  role: "admin"
+)

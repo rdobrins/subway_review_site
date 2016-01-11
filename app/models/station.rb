@@ -10,4 +10,19 @@ class Station < ActiveRecord::Base
   validates :zip, length: { is: 5 }
   validates :zip, numericality: { only_integer: true }
   paginates_per 10
+
+  def average_rating
+    ratings = []
+    reviews = Review.where("station_id = ?", id)
+    reviews.each do |review|
+      ratings << review.rating
+    end
+
+    total = 0
+    ratings.each do |rating|
+      total += rating
+    end
+
+    (total / ratings.length.to_f).round(1)
+  end
 end

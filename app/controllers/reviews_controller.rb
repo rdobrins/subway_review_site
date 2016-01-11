@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+  before_action :authorize_user, only: [:destroy]
+
   def index
   end
 
@@ -22,6 +25,12 @@ class ReviewsController < ApplicationController
       flash[:errors] = @review.errors.full_messages.join(". ")
       render :new
     end
+  end
+
+  def destroy
+    @station = Station.find(params[:station_id])
+    Review.find(params[:id]).destroy
+    redirect_to station_path(@station)
   end
 
   def update
