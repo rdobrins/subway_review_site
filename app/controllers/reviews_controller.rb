@@ -23,6 +23,40 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @review = Review.find(params[:id])
+    @station = Station.find(params[:station_id])
+    vote = Vote.new(user: @user, review: @review)
+    if params[:up] == "true"
+      vote.up = true
+    end
+    if vote.save
+      if params[:up] == "true"
+        @review.up_votes += 1
+      else
+        @review.down_votes += 1
+      end
+    else
+      temp = Vote.where(user: @user, review: @review).first
+      Vote.where(user: @user, review: @review).first.destroy
+      if temp.up == true
+        @review.up_votes -= 1
+        if params[:up] != "true"
+          @review.down_votes += 1
+          vote.save
+        end
+      else
+        @review.down_votes -= 1
+        if params[:up] == "true"
+          @review.up_votes += 1
+          vote.save
+        end
+      end
+    end
+    @review.save
+    redirect_to station_path(@station)
+  end
   private
 
   def review_params

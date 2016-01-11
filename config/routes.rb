@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'stations#index'
 
   resources :stations, only: [:new, :index, :create, :show] do
-    resources :reviews, only: [:new, :create, :index, :update]
+    resources :reviews, only: [:new, :create, :index, :update, :show]
   end
 
 end
