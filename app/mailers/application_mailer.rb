@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "\"Paddy's Gift Shop\" <no-reply@example.com>"
+  default from: "\"Station Review Site\" <icecats1235@gmail.com>"
 end
