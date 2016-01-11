@@ -12,13 +12,14 @@ class Station < ActiveRecord::Base
 
   def average_rating
     ratings = []
-    Review.where("station_id = ?", self.id).each do |rev|
-      ratings << rev.rating
+    reviews = Review.where("station_id = ?", id)
+    reviews.each do |review|
+      ratings << review.rating
     end
 
     total = 0
-    ratings.each do |rat|
-      total += rat
+    ratings.each do |rating|
+      total += rating
     end
 
     (total / ratings.length.to_f).round(1)
