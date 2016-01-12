@@ -22,9 +22,7 @@ RSpec.describe Station, type: :model do
     expect(station.average_rating).to eq(3.7)
   end
   it 'has a search class method' do
-    10.times do
-      FactoryGirl.create(:station)
-    end
+    FactoryGirl.create(:station)
     FactoryGirl.create(:station, name: "Chinatown Station SearchTest")
 
     expect(Station.search("SearchTest").length).to eq(1)

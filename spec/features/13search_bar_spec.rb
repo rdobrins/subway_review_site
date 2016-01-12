@@ -3,9 +3,7 @@ require 'rails_helper'
 feature 'search bar' do
 
   before(:each) do
-    20.times do |i|
-      FactoryGirl.create(:station, name: "Chinatown Station #{i}")
-    end
+    FactoryGirl.create(:station)
     visit root_path
   end
 
@@ -20,7 +18,7 @@ feature 'search bar' do
     expect(page).to have_content("Jupiterstation")
     expect(page).to have_content("Eye of Jupiter")
     expect(page).to have_content("Jupiter 4")
-    expect(page).to_not have_content("Chinatown Station")
+    expect(page).to_not have_content("Chinatown")
   end
 
   scenario 'user inputs and submits a search query with no matches' do
