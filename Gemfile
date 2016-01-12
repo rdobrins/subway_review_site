@@ -19,6 +19,7 @@ gem 'kaminari'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'dotenv'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'

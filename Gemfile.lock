@@ -382,6 +382,7 @@ DEPENDENCIES
   coveralls
   database_cleaner
   devise
+  dotenv
   dotenv-rails
   factory_girl
   factory_girl_rails
