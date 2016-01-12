@@ -18,7 +18,7 @@ gem 'fog'
 gem 'kaminari'
 
 group :development, :test do
-  gem "dotenv-rails"
+  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
