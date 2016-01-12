@@ -105,10 +105,8 @@ ul {
 }
 
 #img-size {
-  height: auto;
+  height: 45px;
   width: auto;
-  max-width: 45px;
-  max-height: 45px;
 }
 
 #hometextpic {
