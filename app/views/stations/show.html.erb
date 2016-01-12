@@ -1,8 +1,6 @@
-<h1>This is where we'll view a specifc station with the reviews!</h1>
-
-<h4>Station: </h4>
-
+</br>
 <h1><%= @station.name %></h1>
+</br>
 
 <h5> Address: <%= @station.address %> </h5>
 <h5> City: <%= @station.city %> </h5>
@@ -18,8 +16,8 @@
 
   </br></br>
 
-<%= link_to "Back to Home Page", root_path %>
-
+<h2>Reviews:</h2>
+  </br>
 <ol>
 
 <% @reviews.each do |review| %>
@@ -46,6 +44,9 @@
 <% end %>
 
 </ol>
+
+<%= link_to "Back to Home Page", root_path %>
+
 <div>
   <% if user_signed_in? && current_user.admin? %>
     <%= link_to 'Delete Station', station_path(@station), data: { confirm: 'Are you sure?' }, method: :delete %>

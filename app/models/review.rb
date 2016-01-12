@@ -10,5 +10,6 @@ class Review < ActiveRecord::Base
                                     message: message }
   validates :rating, numericality: true
   validates :rating, inclusion: { in: (1..5) }
+
   paginates_per 10
 end
