@@ -24,4 +24,8 @@ class Station < ActiveRecord::Base
 
     (total / ratings.length.to_f).round(1)
   end
+  
+  def self.search(query)
+    where("name like ?", "%#{query}%")
+  end
 end

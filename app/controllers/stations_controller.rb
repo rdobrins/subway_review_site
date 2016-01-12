@@ -3,7 +3,16 @@ class StationsController < ApplicationController
   before_action :authorize_user, except: [:index, :show, :new, :create]
 
   def index
-    @stations = Station.page params[:page]
+    if params[:search]
+      @stations = Station.search(
+        params[:search]).page params[:page]
+        if @stations.empty?
+          flash[:notice] = "No matching stations found"
+          redirect_to stations_path
+        end
+    else
+      @stations = Station.page params[:page]
+    end
   end
 
   def show
