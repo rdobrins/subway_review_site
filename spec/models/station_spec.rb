@@ -21,6 +21,14 @@ RSpec.describe Station, type: :model do
     review3
     expect(station.average_rating).to eq(3.7)
   end
+  it 'has a search class method' do
+    FactoryGirl.create(:station)
+    FactoryGirl.create(:station, name: "Chinatown Station SearchTest")
+
+    expect(Station.search("SearchTest").length).to eq(1)
+    expect(Station.search("SearchTest")[0].name).to eq(
+      "Chinatown Station SearchTest")
+  end
   it 'has correct information' do
     expect(station).to be_valid
   end

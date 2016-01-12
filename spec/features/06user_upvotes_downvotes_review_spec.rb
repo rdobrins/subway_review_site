@@ -1,3 +1,4 @@
+require "rails_helper"
 # As a user
 # I want to upvote a review
 # So people can see awesomer reviews
