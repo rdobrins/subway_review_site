@@ -6,6 +6,7 @@ require 'spec_helper'
 feature 'view station page with review button and go to review page' do
 
   scenario 'going to station show page and adding a review and seeing it' do
+    ActionMailer::Base.deliveries.clear
     station3 = FactoryGirl.create(:station)
     user1 = FactoryGirl.create(:user)
     visit root_path
@@ -20,6 +21,7 @@ feature 'view station page with review button and go to review page' do
     click_button "Add Review"
 
     expect(page).to have_content("This review")
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
   scenario 'going to station show page and adding a review and seeing it' do
