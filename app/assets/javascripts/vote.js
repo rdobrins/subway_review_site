@@ -1,13 +1,6 @@
 $(document).ready(function(){
-  // $('.vote').on('submit', function(event){
-  //   console.log("lsakjdf");
-  //   event.preventDefault();
-  //
-  //   var request =
-  //
-  // });
-  $('.vote').on("ajax:complete", function(a, b, c){
-    response = JSON.parse(b.responseText);
+  $(".vote").on("ajax:complete", function(a, b){
+    var response = JSON.parse(b.responseText);
 
     var parentId = a.currentTarget.parentNode.id;
     a = $("#" + parentId + " > .votes");

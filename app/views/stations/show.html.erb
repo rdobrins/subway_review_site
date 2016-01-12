@@ -31,10 +31,10 @@
       Downvotes: <%= review.down_votes%>
     </div>
 
-    <div class="vote" id="vote">
+    <div class="vote" id="upvote">
       <%= button_to "upvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
     </div>
-    <div class="vote" id="vote">
+    <div class="vote" id="downvote">
       <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
     </div>
   </div>
