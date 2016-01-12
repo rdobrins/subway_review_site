@@ -32,3 +32,10 @@ User.create(
   password: "password",
   role: "admin"
 )
+
+Review.create(
+  body: "review for station with id one and a user with id one",
+  user_id: 1,
+  station_id: 1,
+  rating: 4
+)

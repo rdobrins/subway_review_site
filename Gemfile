@@ -13,9 +13,12 @@ gem 'foundation-rails'
 
 gem 'simple_form'
 gem 'devise'
+gem 'carrierwave'
+gem 'fog'
 gem 'kaminari'
 
 group :development, :test do
+  gem "dotenv-rails"
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
