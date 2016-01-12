@@ -4,12 +4,11 @@ class StationsController < ApplicationController
 
   def index
     if params[:search]
-      @stations = Station.search(
-        params[:search]).page params[:page]
-        if @stations.empty?
-          flash[:notice] = "No matching stations found"
-          redirect_to stations_path
-        end
+      @stations = Station.search(params[:search]).page params[:page]
+      if @stations.empty?
+        flash[:notice] = "No matching stations found"
+        redirect_to stations_path
+      end
     else
       @stations = Station.page params[:page]
     end
