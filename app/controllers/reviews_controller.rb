@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       flash[:notice] = "Review added successfully"
+      ReviewMailer.new_review(@review).deliver_later
       redirect_to station_path(@station)
     else
       flash[:errors] = @review.errors.full_messages.join(". ")
@@ -63,8 +64,12 @@ class ReviewsController < ApplicationController
         end
       end
     end
+
     @review.save
-    redirect_to station_path(@station)
+    respond_to do |format|
+      format.html { redirect_to station_path(@station) }
+      format.js { render json: @review }
+    end
   end
   private
 

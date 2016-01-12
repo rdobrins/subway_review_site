@@ -26,7 +26,7 @@ class StationsController < ApplicationController
 
   def create
     @station = Station.new(station_params)
-
+    @station.user = current_user
     if @station.save
       redirect_to station_path(@station)
     else
