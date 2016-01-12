@@ -124,7 +124,20 @@ ul {
 
 #search-button {
   background-color: #005542;
+  padding-right: .95rem;
 }
+
+#search-button-li {
+  padding-right: 1rem;
+  padding-bottom: 1.05rem;
+}
+
+#search-form {
+  padding-left: .75rem;
+  padding-bottom: 1.05rem;
+}
+
+
 
 /*#fff200
 #005542

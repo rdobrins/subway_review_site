@@ -6,6 +6,16 @@ class StationsController < ApplicationController
     @stations = Station.all
     @user = current_user
     @stations = Station.page params[:page]
+    
+    if params[:search]
+      @stations = Station.search(params[:search]).page params[:page]
+      if @stations.empty?
+        flash[:notice] = "No matching stations found"
+        redirect_to stations_path
+      end
+    else
+      @stations = Station.page params[:page]
+    end
   end
 
   def show
