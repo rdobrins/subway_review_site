@@ -63,8 +63,12 @@ class ReviewsController < ApplicationController
         end
       end
     end
+
     @review.save
-    redirect_to station_path(@station)
+    respond_to do |format|
+      format.html { redirect_to station_path(@station) }
+      format.js { render json: @review }
+    end
   end
   private
 
