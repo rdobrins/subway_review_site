@@ -2,6 +2,7 @@ $(document).ready(function(){
   $(".vote").on("ajax:complete", function(a, b){
     var response = JSON.parse(b.responseText);
     var parentId = a.currentTarget.parentNode.id;
+    var c = ""
     a = $("#" + parentId + " > .votes");
     a.empty();
     a.append("Upvotes: " + response.review["up_votes"] + " Downvotes: " + response.review["down_votes"]);
