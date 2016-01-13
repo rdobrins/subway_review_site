@@ -88,7 +88,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to station_path(@station) }
-      format.js { render json: {review: @review, vote: vote, temp: temp } }
+      format.js { render json: { review: @review, vote: vote, temp: temp } }
     end
   end
   private

@@ -19,7 +19,7 @@ feature 'user may edit and delete their own content' do
     click_link station.name
     @station_name = station.name
     @body = review.body
-    binding.pry
+
     click_on "Delete Review"
 
     expect(page).to_not have_content(@body)
