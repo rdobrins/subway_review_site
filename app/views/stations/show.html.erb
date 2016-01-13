@@ -26,17 +26,32 @@
 
     <%= "(#{review.rating}/5) #{review.user.email} says:" %>
     <%= review.body %>
-    <div class="votes">
+    <div class="votes inline">
       Upvotes: <%= review.up_votes%>
       Downvotes: <%= review.down_votes%>
     </div>
-
-    <div class="vote" id="upvote">
-      <%= button_to "upvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
-    </div>
-    <div class="vote" id="downvote">
-      <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
-    </div>
+    <% if Vote.where(user: current_user, review: review) == []%>
+      <div class="vote inline" id="upvote">
+        <%= button_to "  upvote  ", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+      </div>
+      <div class="vote inline" id="downvote">
+        <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+      </div>
+    <% elsif Vote.where(user: current_user, review: review)[0].up == true%>
+      <div class="vote inline" id="upvoted">
+        <%= button_to "  upvote  ", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+      </div>
+      <div class="vote inline" id="downvote">
+        <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+      </div>
+    <%else%>
+      <div class="vote inline" id="upvote">
+        <%= button_to "  upvote  ", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+      </div>
+      <div class="vote inline" id="downvoted">
+        <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+      </div>
+    <%end%>
   </div>
   <% if user_signed_in? && current_user.admin? %>
     <%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %>
