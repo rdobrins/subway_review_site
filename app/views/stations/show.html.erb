@@ -39,7 +39,7 @@
           <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
         </div>
       <% elsif Vote.where(user: current_user, review: review)[0].up == true%>
-        <div class="vote inline" id="upvoted">
+        <div class="upvoted inline" id="upvoted">
           <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
         </div>
         <div class="vote inline" id="downvote">
@@ -49,7 +49,7 @@
         <div class="vote inline" id="upvote">
           <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
         </div>
-        <div class="vote inline" id="downvoted">
+        <div class="downvoted inline" id="downvoted">
           <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
         </div>
       <%end%>
