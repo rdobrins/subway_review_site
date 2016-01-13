@@ -9,17 +9,17 @@ $(document).ready(function(){
     if(response.temp == null){
       if(response.vote.up === true){
         if($("#" + parentId + " > #upvote input").length > 1){
-          c = $("#" + parentId + " > #upvote input");
+          var c = $("#" + parentId + " > #upvote input");
         }else{
-          c = $("#" + parentId + " > #upvoted input");
+          var c = $("#" + parentId + " > #upvoted input");
         };
         c.css("background-color","green");
         c.css("color","white");
       }else{
         if($("#" + parentId + " > #downvote input").length > 1){
-          c = $("#" + parentId + " > #downvote input");
+          var c = $("#" + parentId + " > #downvote input");
         }else{
-          c = $("#" + parentId + " > #downvoted input");
+          var c = $("#" + parentId + " > #downvoted input");
         };
         c.css("background-color","red");
         c.css("color","white");
@@ -27,34 +27,34 @@ $(document).ready(function(){
     }else{
       if(response.temp.up === true){
         if($("#" + parentId + " > #upvote input").length > 1){
-          c = $("#" + parentId + " > #upvote input");
+          var c = $("#" + parentId + " > #upvote input");
         }else{
-          c = $("#" + parentId + " > #upvoted input");
+          var c = $("#" + parentId + " > #upvoted input");
         };
         c.css("background-color","white");
         c.css("color","green");
         if(response.vote.up != true){
           if($("#" + parentId + " > #downvote input").length > 1){
-            c = $("#" + parentId + " > #downvote input");
+            var c = $("#" + parentId + " > #downvote input");
           }else{
-            c = $("#" + parentId + " > #downvoted input");
+            var c = $("#" + parentId + " > #downvoted input");
           };
           c.css("background-color","red");
           c.css("color","white");
         }
       }else{
         if($("#" + parentId + " > #downvote input").length > 1){
-          c = $("#" + parentId + " > #downvote input");
+          var c = $("#" + parentId + " > #downvote input");
         }else{
-          c = $("#" + parentId + " > #downvoted input");
+          var c = $("#" + parentId + " > #downvoted input");
         };
         c.css("background-color","white");
         c.css("color","red");
         if(response.vote.up === true){
           if($("#" + parentId + " > #upvote input").length > 1){
-            c = $("#" + parentId + " > #upvote input");
+            var c = $("#" + parentId + " > #upvote input");
           }else{
-            c = $("#" + parentId + " > #upvoted input");
+            var c = $("#" + parentId + " > #upvoted input");
           };
           c.css("background-color","green");
           c.css("color","white");
