@@ -13,8 +13,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-      "http://i.imgur.com/zelfHo9.png"
-   end
+    "http://i.imgur.com/zelfHo9.png"
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
