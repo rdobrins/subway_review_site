@@ -1,6 +1,5 @@
 require 'spec_helper'
 # User Authentication Tests
-
 # [X] As a user I want to be able to sign up
 
 feature 'sign up' do
