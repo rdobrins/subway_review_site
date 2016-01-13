@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <h1>This is where we'll update reviews!</h1>
+
+  <%= form_for [@station, @review] do |f| %>
+    <%= f.label :rating, "Rating - Required" %>
+    <%= f.select :rating, options_for_select((1..5).to_a.reverse, @review.rating)  %>
+      </br>
+    <%= f.label :body, "Review" %>
+    <%= f.text_field :body, value: @review.body %>
+      </br>
+    <%= f.hidden_field(:user_id, :value => @user.id) %>
+    <%= f.submit "Update Review" %>
+  <% end %>
+
+  <%= link_to "Back to station page", station_path(@station) %>
+<% else %>
+  <h2>Need to be logged in to update a review</h2>
+<% end %>

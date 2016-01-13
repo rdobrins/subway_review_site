@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+  <h1>This is where we'll update a station</h1>
+
+  <%= form_for(@station) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, value: @station.name %>
+      <br>
+    <%= f.label :address %>
+    <%= f.text_field :address, value: @station.address %>
+      <br>
+    <%= f.label :city %>
+    <%= f.text_field :city, value: @station.city %>
+      <br>
+    <%= f.label :state %>
+    <%= f.text_field :state, value: @station.state %>
+      <br>
+    <%= f.label :zip %>
+    <%= f.text_field :zip, value: @station.zip %>
+      <br>
+    <%= f.submit "Update Station" %>
+  <% end %>
+
+  <%= link_to "Back to Home Page", root_path %>
+<% else %>
+  <h2>Need to be signed in to update station!</h2>
+<% end %>

@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
-  before_action :authorize_user, except: [:index, :show, :new, :create]
+  before_action :station_authorize_user, except: [:index, :show, :new, :create]
 
   def index
     if params[:search]
@@ -30,6 +30,22 @@ class StationsController < ApplicationController
       redirect_to station_path(@station)
     else
       render :new
+    end
+  end
+
+  def edit
+    @station = Station.find(params[:id])
+  end
+
+  def update
+    @station = Station.find(params[:id])
+
+    if @station.update(station_params)
+      flash[:notice] = "Station updated successfully"
+      redirect_to station_path(@station)
+    else
+      flash[:errors] = @station.errors.full_messages.join(". ")
+      render :edit
     end
   end
 
