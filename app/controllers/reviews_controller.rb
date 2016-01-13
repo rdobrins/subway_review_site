@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user, except: [:index]
-  before_action :authorize_user, only: [:destroy]
+  before_action :review_authorize_user, only: [:destroy, :edit, :update]
 
   def index
   end
@@ -27,13 +27,32 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @station = Station.find(params[:station_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @station = Station.find(params[:station_id])
+    @review = Review.find(params[:id])
+
+    if @review.update(review_params)
+      flash[:notice] = "Review updated successfully"
+      redirect_to station_path(@station)
+    else
+      flash[:errors] = @review.errors.full_messages.join(". ")
+      render :edit
+    end
+  end
+
   def destroy
     @station = Station.find(params[:station_id])
     Review.find(params[:id]).destroy
     redirect_to station_path(@station)
   end
 
-  def update
+  def vote
     @user = current_user
     @review = Review.find(params[:id])
     @station = Station.find(params[:station_id])

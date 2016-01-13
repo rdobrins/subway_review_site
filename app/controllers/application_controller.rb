@@ -11,9 +11,27 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorize_user
-    if !user_signed_in? || !current_user.admin?
+  def station_authorize_user
+    station = Station.find(params[:id])
+    if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
+    end
+    unless current_user.admin?
+      if station.user != current_user
+        raise ActionController::RoutingError.new("Not Found")
+      end
+    end
+  end
+
+  def review_authorize_user
+    review = Review.find(params[:id])
+    if !user_signed_in?
+      raise ActionController::RoutingError.new("Not Found")
+    end
+    unless current_user.admin?
+      if review.user != current_user
+        raise ActionController::RoutingError.new("Not Found")
+      end
     end
   end
 
