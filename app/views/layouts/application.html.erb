@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Subway Station Reviews" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -32,8 +32,8 @@
           </li>
           <% if user_signed_in? %>
             <li>
-              <div class="inline"> <img id="img-size" src="<%= @user.avatar.url %>"/> </div>
               <div class="inline"> Signed in as: <strong><%= @user.first_name %> <%= @user.last_name %></strong> </div>
+              <div class="inline"> <img id="img-size" src="<%= @user.avatar.url %>"/> </div>
             </li>
             <li class="green-background"><strong><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></strong></li>
             <li class="green-background"><strong><%= link_to 'Edit Info', edit_user_registration_path%></strong></li>

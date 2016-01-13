@@ -21,7 +21,14 @@
 <ol>
 
 <% @reviews.each do |review| %>
-  <li><%= review.body %></li>
+  <li>
+    <div class="inline">
+      <% user = User.find(review.user_id) %>
+      <img id='img-size' class='smooth-corners' src="<%= user.avatar.url%>"/>
+    </div>
+    <%= review.body %>
+  </li>
+    </br>
   <div class="review-<%=review.id%>" id="review-<%=review.id%>">
 
     <%= "(#{review.rating}/5) #{review.user.email} says:" %>
@@ -31,10 +38,10 @@
       Downvotes: <%= review.down_votes%>
     </div>
 
-    <div class="vote" id="upvote">
+    <div class="vote inline" id="upvote">
       <%= button_to "upvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
     </div>
-    <div class="vote" id="downvote">
+    <div class="vote inline" id="downvote">
       <%= button_to "downvote", station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
     </div>
   </div>
