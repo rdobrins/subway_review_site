@@ -41,6 +41,7 @@ class StationsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @station = Station.find(params[:id])
   end
 
