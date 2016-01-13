@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
     station = Station.find(params[:id])
     if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
-      unless current_user.admin?
-        if station.user != current_user
-          raise ActionController::RoutingError.new("Not Found")
-        end
+    end
+    unless current_user.admin?
+      if station.user != current_user
+        raise ActionController::RoutingError.new("Not Found")
       end
     end
   end
@@ -27,10 +27,10 @@ class ApplicationController < ActionController::Base
     review = Review.find(params[:id])
     if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
-      unless current_user.admin?
-        if review.user != current_user
-          raise ActionController::RoutingError.new("Not Found")
-        end
+    end
+    unless current_user.admin?
+      if review.user != current_user
+        raise ActionController::RoutingError.new("Not Found")
       end
     end
   end

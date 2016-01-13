@@ -4,8 +4,9 @@ feature 'user may edit and delete their own content' do
   let(:user) { FactoryGirl.create(:user) }
   let(:user_friend) { FactoryGirl.create(:user) }
   let!(:station) { FactoryGirl.create(:station, user_id: user.id) }
-  let!(:review) { FactoryGirl.create(
-    :review, station_id: station.id, user_id: user.id) }
+  let!(:review) do
+    FactoryGirl.create(:review, station_id: station.id, user_id: user.id)
+  end
   before(:each) do
     visit root_path
     click_link 'Sign In'
@@ -48,7 +49,6 @@ feature 'user may edit and delete their own content' do
     select(1, from: "Rating - Required")
     fill_in 'Review', with: "Update This review"
     click_button "Update Review"
-
 
     expect(page).to have_content(station.name)
     expect(page).to have_content("Update This review")
