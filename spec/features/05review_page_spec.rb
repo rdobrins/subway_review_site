@@ -7,8 +7,8 @@ feature 'view station page with review button and go to review page' do
 
   scenario 'going to station show page and adding a review and seeing it' do
     ActionMailer::Base.deliveries.clear
-    station3 = FactoryGirl.create(:station)
     user1 = FactoryGirl.create(:user)
+    station3 = FactoryGirl.create(:station)
     visit root_path
     click_link "Sign In"
     fill_in 'Email', with: user1.email
@@ -39,5 +39,21 @@ feature 'view station page with review button and go to review page' do
     station4 = FactoryGirl.create(:station)
     expect { visit new_station_review_path(station4) }.to raise_error(
       ActionController::RoutingError)
+  end
+
+  scenario "user can't add a review if they have already added a review" do
+    station = FactoryGirl.create(:station)
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(
+      :review, rating: 4, station_id: station.id, user_id: user.id)
+    visit root_path
+    click_link "Sign In"
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button "Log in"
+    click_link station.name
+
+    expect(page).to_not have_content("Add Review")
+    expect(page).to have_content("Edit Review")
   end
 end

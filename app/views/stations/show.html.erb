@@ -8,19 +8,34 @@
 <h5> Zip Code: <%= @station.zip %> </h5>
 <h5> Rating: <%= @station.average_rating %> </h5>
 
- </br></br>
-
+  </br></br>
 <% if user_signed_in? %>
- <%= link_to "Add Review", new_station_review_path(@station) %>
+  <% if Review.where(user: @user, station: @station).size == 0%>
+
+    <%= form_for [@station, @review] do |f| %>
+      <%= f.label :rating, "Rate this Station" %>
+      <%= f.select(:rating, (1..5).to_a.reverse) %>
+      <%= f.hidden_field(:user_id, :value => @user.id) %>
+      <%= f.submit "Submit" %>
+    <% end %>
+
+    <%= link_to "Add Review", new_station_review_path(@station) %>
+  <% else %>
+    <%= link_to 'Edit Review', edit_station_review_path(@station, Review.where(user: @user, station: @station).first) %>
+    <%= link_to 'Delete Review', station_review_path(@station, Review.where(user: @user, station: @station).first), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>
 <% end %>
 
- </br></br>
+</br></br>
 
 <h2>Reviews:</h2>
  </br>
 <ol>
 
 <% @reviews.each do |review| %>
+  <% if review.body.nil? or review.body == "" %>
+    <% break %>
+  <% end %>
  <li>
    <div class="inline">
      <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>">  <%= "#{review.user.first_name} #{review.user.last_name} says:" %></img>
@@ -37,53 +52,48 @@
     <div class="votes inline">
       Score: <%= review.up_votes - review.down_votes%>
     </div>
-    <% if user_signed_in?%>
-      <% if Vote.where(user: current_user, review: review) == []%>
-        <div class="vote inline" id="upvote">
-          <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
-        </div>
-        <div class="vote inline" id="downvote">
-          <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
-        </div>
-      <% elsif Vote.where(user: current_user, review: review)[0].up == true%>
-        <div class="vote inline" id="upvoted">
-          <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
-        </div>
-        <div class="vote inline" id="downvote">
-          <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
-        </div>
-      <%else%>
-        <div class="vote inline" id="upvote">
-          <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
-        </div>
-        <div class="vote inline" id="downvoted">
-          <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
-        </div>
-      <%end%>
-    <%end%>
+<% if user_signed_in?%>
+  <% if Vote.where(user: current_user, review: review) == []%>
+    <div class="vote inline" id="upvote">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote inline" id="downvote">
+      <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
+  <% elsif Vote.where(user: current_user, review: review)[0].up == true%>
+    <div class="vote inline" id="upvoted">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote inline" id="downvote">
+      <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
+  <%else%>
+    <div class="vote inline" id="upvote">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote inline" id="downvoted">
+      <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
+  <%end%>
+<%end%>
+
+</div>
+    <% if user_signed_in? && current_user.admin? %>
+        <%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %>
+        <%= link_to 'Edit Review', edit_station_review_path(@station, review) %>
+      <% end %>
   </div>
-  <% if user_signed_in? %>
-     <% if review.user == current_user || current_user.admin?%>
-     <ul class='inline'>
-       <li class='inline'><%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %></li>
-       <li class='inline'><%= link_to 'Edit Review', edit_station_review_path(@station, review) %></li>
-     </ul>
-     <% end %>
-   <% end %>
 <% end %>
 
 </ol>
-
 <center>
- <%= link_to "Back to Home Page", root_path %>
- <div class="inline">
-   <% if user_signed_in? %>
-     <% if @station.user == current_user || current_user.admin?%>
-       <ul class='inline'>
-         <li class='inline'><%= link_to 'Delete Station', station_path(@station), data: { confirm: 'Are you sure?' }, method: :delete %></li>
-         <li class='inline'><%= link_to 'Edit Station', edit_station_path(@station) %></li>
-       </ul>
-     <% end %>
-   <% end %>
- </div>
+  <div class="bottom-bar-show">
+     | <%= link_to "Back to Home Page", root_path %> |
+        <% if user_signed_in? %>
+          <% if @station.user == current_user || current_user.admin?%>
+            <%= link_to 'Delete Station', station_path(@station), data: { confirm: 'Are you sure?' }, method: :delete %> |
+            <%= link_to 'Edit Station', edit_station_path(@station) %> |
+          <% end %>
+        <% end %>
+  </div>
 </center>
