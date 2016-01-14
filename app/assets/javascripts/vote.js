@@ -5,7 +5,7 @@ $(document).ready(function(){
     var c = "";
     a = $("#" + parentId + " > .votes");
     a.empty();
-    a.append("Upvotes: " + response.review.down_votes + " Downvotes: ");
+    a.append("Upvotes: " + response.review.up_votes + " Downvotes: ");
     a.append(response.review.down_votes);
     if(response.temp === null){
       if(response.vote.up === true){
