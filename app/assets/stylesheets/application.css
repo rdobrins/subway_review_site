@@ -119,13 +119,14 @@ ul.edit-delete {
 }
 
 .inline {
-  padding-right: 2rem;
+  padding-right: 1rem;
   display: inline-block;
 }
 
 #img-size {
   height: 45px;
   width: auto;
+  border-radius: 25px;
 }
 
 #hometextpic {

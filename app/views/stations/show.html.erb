@@ -8,22 +8,27 @@
 <h5> Zip Code: <%= @station.zip %> </h5>
 <h5> Rating: <%= @station.average_rating %> </h5>
 
-  </br></br>
+ </br></br>
 
 <% if user_signed_in? %>
-  <%= link_to "Add Review", new_station_review_path(@station) %>
+ <%= link_to "Add Review", new_station_review_path(@station) %>
 <% end %>
 
-  </br></br>
+ </br></br>
 
 <h2>Reviews:</h2>
-  </br>
+ </br>
 <ol>
 
 <% @reviews.each do |review| %>
-  <li><%= review.body %></li>
-  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
-
+ <li>
+   <div class="inline">
+     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>"/>
+   </div>
+   <%= review.body %>
+ </li>
+    </br>
+ <div class="review-<%=review.id%>" id="review-<%=review.id%>">
     <%= "(#{review.rating}/5) #{review.user.email} says:" %>
     <%= review.body %>
     <div class="votes inline">
@@ -66,8 +71,6 @@
 <% end %>
 
 </ol>
-
-<%= link_to "Back to Home Page", root_path %>
 
 <center>
  <%= link_to "Back to Home Page", root_path %>
