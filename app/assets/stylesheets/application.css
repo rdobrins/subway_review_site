@@ -99,7 +99,7 @@ ul {
   margin-left: 3rem;
 }
 
-ul.edit-delete {
+/*ul.edit-delete {
   background-color: #005542;
   float: left;
   margin-right: 1rem;
@@ -115,6 +115,10 @@ ul.edit-delete {
   border: 0;
   font-size: 1.0rem;
   font: #005542;
+  text-align: center;
+}*/
+
+.bottom_bar_show {
   text-align: center;
 }
 

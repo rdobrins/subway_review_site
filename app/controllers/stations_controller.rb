@@ -19,9 +19,20 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find(params[:id])
-    @reviews = @station.reviews
+    @review = Review.new
     @user = current_user
+    @station = Station.find(params[:id])
+    @reviews = @station.reviews.to_a
+    @reviews.sort! do |a, b|
+      if a.up_votes + a.down_votes == 0
+        return -1
+      elsif b.up_votes + b.down_votes == 0
+        return 1
+      end
+
+      ((b.up_votes - b.down_votes)/(b.up_votes + b.down_votes)) <=> ((a.up_votes - a.down_votes)/(a.up_votes + a.down_votes))
+    end
+
   end
 
   def new
