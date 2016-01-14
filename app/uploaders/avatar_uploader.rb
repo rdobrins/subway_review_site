@@ -16,7 +16,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "http://i.imgur.com/zelfHo9.png"
   end
 
-  # def store_dir
-  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  # end
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 end
