@@ -2,9 +2,6 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user, except: [:index]
   before_action :review_authorize_user, only: [:destroy, :edit, :update]
 
-  def index
-  end
-
   def new
     @user = current_user
     @station = Station.find(params[:station_id])
