@@ -29,7 +29,7 @@ class StationsController < ApplicationController
       elsif b.up_votes + b.down_votes == 0
         return 1
       end
-      ((b.up_votes - b.down_votes)/(b.up_votes + b.down_votes)) <=> ((a.up_votes - a.down_votes)/(a.up_votes + a.down_votes))
+      ((b.up_votes - b.down_votes) / (b.up_votes + b.down_votes)) <=> ((a.up_votes - a.down_votes) / (a.up_votes + a.down_votes))
     end
   end
 
