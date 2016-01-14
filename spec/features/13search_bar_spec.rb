@@ -7,12 +7,12 @@ feature 'search bar' do
     visit root_path
   end
 
-  scenario 'user inputs and submits a search query' do
+  scenario 'user inputs and submits a case insensitive search query' do
     FactoryGirl.create(:station, name: "Jupiterstation")
     FactoryGirl.create(:station, name: "Eye of Jupiter")
     FactoryGirl.create(:station, name: "Jupiter 4")
 
-    fill_in "search", with: "Jupiter"
+    fill_in "search", with: "jupiter"
     click_on "Search"
 
     expect(page).to have_content("Jupiterstation")

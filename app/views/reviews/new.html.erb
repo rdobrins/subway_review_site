@@ -1,6 +1,6 @@
 
 <% if user_signed_in? %>
-  <h1>This is where we'll create new reviews!</h1>
+  <h1>Create New Review</h1>
 
   <%= form_for [@station, @review] do |f| %>
     <%= f.label :rating, "Rating - Required" %>

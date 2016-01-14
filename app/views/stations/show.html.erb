@@ -29,57 +29,58 @@
 </br></br>
 
 <h2>Reviews:</h2>
-  </br>
+ </br>
 <ol>
 
 <% @reviews.each do |review| %>
-
   <% if review.body.nil? or review.body == "" %>
     <% break %>
   <% end %>
-
-  <li><%= review.body %></li>
-  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
-
+ <li>
+   <div class="inline">
+     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>"/>
+   </div>
+   <%= review.body %>
+ </li>
+    </br>
+ <div class="review-<%=review.id%>" id="review-<%=review.id%>">
     <%= "(#{review.rating}/5) #{review.user.email} says:" %>
     <%= review.body %>
-    <div class="votes">
-      Upvotes: <%= review.up_votes%>
-      Downvotes: <%= review.down_votes%>
+    <div class="votes inline">
+      Score: <%= review.up_votes - review.down_votes%>
     </div>
-
-    <div class="vote" id="upvote">
-      <%= button_to "upvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+<% if user_signed_in?%>
+  <% if Vote.where(user: current_user, review: review) == []%>
+    <div class="vote inline" id="upvote">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
     </div>
-    <div class="vote" id="downvote">
+    <div class="vote inline" id="downvote">
       <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
     </div>
+  <% elsif Vote.where(user: current_user, review: review)[0].up == true%>
+    <div class="vote inline" id="upvoted">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote inline" id="downvote">
+      <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
+  <%else%>
+    <div class="vote inline" id="upvote">
+      <%= button_to "  upvote  ", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: true}%>
+    </div>
+    <div class="vote inline" id="downvoted">
+      <%= button_to "downvote", vote_station_review_path(@station,review), method:"patch", remote: true, params: {up: false}%>
+    </div>
+  <%end%>
+<%end%>
 
+</div>
     <% if user_signed_in? && current_user.admin? %>
         <%= link_to 'Delete Review', station_review_path(@station, review), data: { confirm: 'Are you sure?' }, method: :delete %>
         <%= link_to 'Edit Review', edit_station_review_path(@station, review) %>
       <% end %>
   </div>
 <% end %>
-
-<!--
-░░░░░░░░░░░░▄▐░░░░░░<br>
-░░░░░░▄▄▄░░▄██▄░░░░░<br>
-░░░░░▐▀█▀▌░░░░▀█▄░░░<br>
-░░░░░▐█▄█▌░░░░░░▀█▄░<br>
-░░░░░░▀▄▀░░░▄▄▄▄▄▀▀░<br>
-░░░░▄▄▄██▀▀▀▀░░░░░░░<br>
-░░░█▀▄▄▄█░▀▀░░░░░░░░<br>
-░░░▌░▄▄▄▐▌▀▀▀░░░░░░░<br>
-▄░▐░░░▄▄░█░▀▀░░░░░░░ U HAVE BEEN SPOOPED BY THE<br>
-▀█▌░░░▄░▀█▀░▀░░░░░░░<br>
-░░░░░░░▄▄▐▌▄▄░░░░░░░<br>
-░░░░░░░▀███▀█░▄░░░░░<br>
-░░░░░░▐▌▀▄▀▄▀▐▄░░░░░ SPOOPY SKILENTON<br>
-░░░░░▐▀░░░░░░▐▌░░░░░<br>
-░░░░░░█░░░░░░░░█░░░░<br>
-░░░░░▐▌░░░░░░░░░█░░░<br>
-░░░░░█░░░░░░░░░░▐▌░░<br> -->
 
 </ol>
 <center>
