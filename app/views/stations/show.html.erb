@@ -23,17 +23,18 @@
 <% @reviews.each do |review| %>
  <li>
    <div class="inline">
-     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>"/>
+     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>">  <%= "#{review.user.first_name} #{review.user.last_name} says:" %></img>
    </div>
-   <%= review.body %>
  </li>
-    </br>
  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
-    <%= "(#{review.rating}/5) #{review.user.email} says:" %>
-    <%= review.body %>
-    <div class="votes inline">
-      Upvotes: <%= review.up_votes%>
-      Downvotes: <%= review.down_votes%>
+     </br>
+    <div>
+      "<%= review.body %>"
+    </div>
+      </br>
+    <div class="votes inline" id="vote-spacing">
+        Upvotes: <%= review.up_votes%>
+        Downvotes: <%= review.down_votes%>
     </div>
     <% if user_signed_in?%>
       <% if Vote.where(user: current_user, review: review) == []%>
@@ -60,6 +61,7 @@
       <%end%>
     <%end%>
   </div>
+  </br>
   <% if user_signed_in? %>
      <% if review.user == current_user || current_user.admin?%>
      <ul class='inline'>

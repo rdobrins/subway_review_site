@@ -123,6 +123,7 @@ ul.edit-delete {
   display: inline-block;
 }
 
+
 #img-size {
   height: 45px;
   width: auto;
@@ -252,6 +253,12 @@ ul.edit-delete {
  position:relative;
  top:1px;
 }
+
+#vote-spacing{
+  padding-left: 0.5rem;
+}
+
+
 /*#fff200
 #005542
 #f9f8f6*/
