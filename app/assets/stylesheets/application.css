@@ -252,6 +252,10 @@ ul.edit-delete {
  position:relative;
  top:1px;
 }
+
+#review-body{
+  padding-bottom: 0.5rem;
+}
 /*#fff200
 #005542
 #f9f8f6*/
