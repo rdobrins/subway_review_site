@@ -23,8 +23,7 @@
 <% @reviews.each do |review| %>
  <li>
    <div class="inline">
-     <% user = User.find(review.user_id) %>
-     <img id='img-size' class='smooth-corners' src="<%= user.avatar.url%>"/>
+     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>"/>
    </div>
    <%= review.body %>
  </li>
