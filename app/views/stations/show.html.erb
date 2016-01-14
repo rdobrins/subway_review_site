@@ -32,8 +32,7 @@
     <%= "(#{review.rating}/5) #{review.user.email} says:" %>
     <%= review.body %>
     <div class="votes inline">
-      Upvotes: <%= review.up_votes%>
-      Downvotes: <%= review.down_votes%>
+      Score: <%= review.up_votes - review.down_votes%>
     </div>
     <% if user_signed_in?%>
       <% if Vote.where(user: current_user, review: review) == []%>

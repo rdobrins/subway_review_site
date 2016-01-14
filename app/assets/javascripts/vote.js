@@ -5,8 +5,8 @@ $(document).ready(function(){
     var c = "";
     a = $("#" + parentId + " > .votes");
     a.empty();
-    a.append("Upvotes: " + response.review.up_votes + " Downvotes: ");
-    a.append(response.review.down_votes);
+    var score = response.review.up_votes - response.review.down_votes;
+    a.append("Score: " + score);
     if(response.temp === null){
       if(response.vote.up === true){
         if($("#" + parentId + " > #upvote input").length > 1){
