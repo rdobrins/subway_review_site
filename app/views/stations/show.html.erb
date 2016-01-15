@@ -33,6 +33,7 @@
 <ol>
 
 <% @reviews.each do |review| %>
+  </br>
   <% if review.body.nil? or review.body == "" %>
     <% next %>
   <% end %>
