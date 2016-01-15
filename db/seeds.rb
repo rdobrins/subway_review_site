@@ -28,8 +28,8 @@
 User.create(
   first_name: "Test",
   last_name: "Admin",
-  email: "admin@gmail.com",
-  password: "password",
+  email: "admin@admin.com",
+  password: "nimda",
   role: "admin"
 )
 #
