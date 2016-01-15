@@ -3,7 +3,6 @@ class StationsController < ApplicationController
   before_action :station_authorize_user, except: [:index, :show, :new, :create]
 
   def index
-    @stations = Station.all.order(:name)
     @user = current_user
     @stations = Station.page params[:page]
 
@@ -16,6 +15,9 @@ class StationsController < ApplicationController
     else
       @stations = Station.page params[:page]
     end
+
+    @stations.order!("lower(name) ASC")
+
   end
 
   def show
@@ -47,9 +49,9 @@ class StationsController < ApplicationController
     @station = Station.new(station_params)
     @station.user = current_user
     if @station.save
-      m = "#{@user.first_name} just added a station to review! Check it out at"
-      m += " https://subway-review-site.herokuapp.com/stations/#{@station.id}"
-      $twitter.update(m)
+      # m = "#{@user.first_name} just added a station to review! Check it out at"
+      # m += " https://subway-review-site.herokuapp.com/stations/#{@station.id}"
+      # $twitter.update(m)
       redirect_to station_path(@station)
     else
       render :new
