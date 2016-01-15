@@ -29,10 +29,12 @@ class StationsController < ApplicationController
       elsif b.up_votes + b.down_votes == 0
         return 1
       end
-
-      ((b.up_votes - b.down_votes)/(b.up_votes + b.down_votes)) <=> ((a.up_votes - a.down_votes)/(a.up_votes + a.down_votes))
+      bdiff = b.up_votes - b.down_votes
+      bsum = b.up_votes + b.down_votes
+      adiff = a.up_votes - a.down_votes
+      asum = a.up_votes + a.down_votes
+      ((bdiff) / (bsum)) <=> ((adiff) / (asum))
     end
-
   end
 
   def new

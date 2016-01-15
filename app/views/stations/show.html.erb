@@ -38,14 +38,17 @@
   <% end %>
  <li>
    <div class="inline">
-     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>"/>
+     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>">  <%= "#{review.user.first_name} #{review.user.last_name} says:" %></img>
    </div>
-   <%= review.body %>
  </li>
-    </br>
  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
-    <%= "(#{review.rating}/5) #{review.user.email} says:" %>
-    <%= review.body %>
+  <div id="review-body">
+    </br>
+      <%="Rating: (#{review.rating}/5)"%>
+  </div>
+  <div>
+    Review: "<%=review.body%>"
+  </div>
     <div class="votes inline">
       Score: <%= review.up_votes - review.down_votes%>
     </div>
