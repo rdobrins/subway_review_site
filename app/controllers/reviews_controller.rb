@@ -16,8 +16,8 @@ class ReviewsController < ApplicationController
 
     if @review.save
       flash[:notice] = "Review added successfully"
-      ReviewMailer.new_review(@review).deliver_later
-      redirect_to station_path(@station)
+      # ReviewMailer.new_review(@review).deliver_later
+      redirect_to stations_path
     else
       flash[:errors] = @review.errors.full_messages.join(". ")
       render :new
