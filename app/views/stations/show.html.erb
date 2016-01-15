@@ -37,9 +37,15 @@
     <% break %>
   <% end %>
  <li>
-   <div class="inline">
-     <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>">  <%= "#{review.user.first_name} #{review.user.last_name} says:" %></img>
-   </div>
+   <% if review.user != nil %>
+     <div class="inline">
+       <img id='img-size' class='smooth-corners' src="<%= review.user.avatar.url%>">  <%= "#{review.user.first_name} #{review.user.last_name} says:" %></img>
+     </div>
+   <% else %>
+     <div class="inline">
+       <img id='img-size' class='smooth-corners' src="http://i.imgur.com/zelfHo9.png"> USER NO LONGER EXISTS says: </img>
+     </div>
+   <% end %>
  </li>
  <div class="review-<%=review.id%>" id="review-<%=review.id%>">
   <div id="review-body">
