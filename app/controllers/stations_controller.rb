@@ -40,11 +40,13 @@ class StationsController < ApplicationController
     @station = Station.new(station_params)
     @station.user = current_user
     if @station.save
+      flash[:notice] = "Station Created Successfully"
       # m = "#{@user.first_name} just added a station to review! Check it out at"
       # m += " https://subway-review-site.herokuapp.com/stations/#{@station.id}"
       # $twitter.update(m)
       redirect_to station_path(@station)
     else
+      flash[:errors] = @station.errors.full_messages.join(". ")
       render :new
     end
   end
@@ -56,6 +58,7 @@ class StationsController < ApplicationController
 
   def update
     @station = Station.find(params[:id])
+    @user = current_user
 
     if @station.update(station_params)
       flash[:notice] = "Station updated successfully"
