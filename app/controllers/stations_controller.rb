@@ -47,7 +47,7 @@ class StationsController < ApplicationController
     if @station.save
       m = "#{@user.first_name} just added a station to review! Check it out at"
       m += " https://subway-review-site.herokuapp.com/stations/#{@station.id}"
-      $twitter.update(m)
+      # $twitter.update(m)
       redirect_to station_path(@station)
     else
       render :new
