@@ -3,7 +3,7 @@ class StationsController < ApplicationController
   before_action :station_authorize_user, except: [:index, :show, :new, :create]
 
   def index
-    @stations = Station.all
+    @stations = Station.all.order(:name)
     @user = current_user
     @stations = Station.page params[:page]
 
