@@ -24,16 +24,7 @@ class StationsController < ApplicationController
     @station = Station.find(params[:id])
     @reviews = @station.reviews.to_a
     @reviews.sort! do |a, b|
-      if a.up_votes + a.down_votes == 0
-        return -1
-      elsif b.up_votes + b.down_votes == 0
-        return 1
-      end
-      bdiff = b.up_votes - b.down_votes
-      bsum = b.up_votes + b.down_votes
-      adiff = a.up_votes - a.down_votes
-      asum = a.up_votes + a.down_votes
-      ((bdiff) / (bsum)) <=> ((adiff) / (asum))
+      (b.up_votes - b.down_votes) <=> (a.up_votes - a.down_votes)
     end
   end
 
