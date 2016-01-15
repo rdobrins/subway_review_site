@@ -25,13 +25,13 @@
 #   user_id: 1
 # )
 #
-# User.create(
-#   first_name: "Test",
-#   last_name: "Admin",
-#   email: "admin@gmail.com",
-#   password: "password",
-#   role: "admin"
-# )
+User.create(
+  first_name: "Test",
+  last_name: "Admin",
+  email: "admin@gmail.com",
+  password: "password",
+  role: "admin"
+)
 #
 # Review.create(
 #   body: "review for station with id one and a user with id one",
