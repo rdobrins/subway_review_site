@@ -19,6 +19,9 @@ class Station < ActiveRecord::Base
     end
 
     total = 0
+    if ratings == []
+      return "0"
+    end
     ratings.each do |rating|
       total += rating
     end
