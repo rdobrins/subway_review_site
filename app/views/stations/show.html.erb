@@ -34,7 +34,7 @@
 
 <% @reviews.each do |review| %>
   <% if review.body.nil? or review.body == "" %>
-    <% break %>
+    <% next %>
   <% end %>
  <li>
    <div class="inline">
