@@ -87,12 +87,13 @@ ul {
 
 .homepic {
   height: 24rem;
+  width: 75%;
   background-size: cover;
   overflow: hidden;
   border-radius: 3rem;
   float: right;
   padding-right: 2rem;
-  margin-right: -15rem;
+  margin-right: -5rem;
 }
 
 .stations-list {
