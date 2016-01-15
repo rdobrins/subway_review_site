@@ -35,13 +35,13 @@ feature 'view home page with list and adding to it' do
   end
 
   scenario 'pagination works as intended' do
-    20.times do ||
+    12.times do ||
       FactoryGirl.create(:station)
     end
     visit root_path
     expect(page).to have_content("Chinatown5")
     expect(page).to_not have_content("Chinatown15")
     click_link "Next"
-    expect(page).to have_content("Chinatown15")
+    expect(page).to have_content("Chinatown9")
   end
 end
