@@ -16,42 +16,48 @@
 
  */
 body {
-  background-color: #005542;
+  background-color: #F0F0F0;
   color: #f9f8f6;
   margin-left: 3rem;
   margin-right: 3rem;
 }
 
 h1 {
-  color: #fff200;
+  color: #FF5A09;
 }
 
 h2 {
-  color: #f9f8f6;
+  color: #202020;
 }
 
 h4 {
-  color: #f9f8f6;
+  color: #202020;
 }
 
 h5 {
-  color: #f9f8f6;
+  color: #202020;
 }
 
 li {
-  color: #f9f8f6;
+  color: #202020;
 }
 
 a {
-  color: #f9f8f6;
+  color: #F0F0F0;
+  border-radius: 10px;
+  padding: .20rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  background-color: #FF5A09;
 }
 
 a:hover {
-    background-color: yellow;
+    background-color: #004687;
+    color: #F0F0F0;
 }
 
 label {
-  color: #f9f8f6;
+  color: #FF5A09;
 }
 
 ul {
@@ -61,18 +67,20 @@ ul {
 }
 
 .top-bar {
-  background-color: #fff200;
-  color: #005542;
+  background-color: #202020;
+  color: #F0F0F0;
   margin-left: -3rem;
   margin-right: -3rem;
 }
 
 .green-background {
-  background-color: #fff200;
+  background-color: #B6B6B6;
+  color: #F0F0F0;
 }
 
 .HomeHeader {
-  margin-left: 50px
+  margin-left: -10%;
+  font-family: Courier;
 }
 
 .StationsHeader {
@@ -86,6 +94,7 @@ ul {
 }
 
 .homepic {
+  border: 10px solid #004687;
   height: 24rem;
   width: 75%;
   background-size: cover;
@@ -126,12 +135,14 @@ ul {
 .inline {
   padding-right: 1rem;
   display: inline-block;
+  color: #F0F0F0;
 }
 
 #img-size {
   height: 45px;
   width: auto;
   border-radius: 25px;
+  border: 3px solid #FF5A09;
 }
 
 #hometextpic {
@@ -140,7 +151,8 @@ ul {
 }
 
 #home-compass {
-  color: #005542;
+  padding: -1rem;
+  color: #F0F0F0;
 }
 
 #subway-link:hover {
@@ -148,13 +160,14 @@ ul {
 }
 
 #search-button {
-  background-color: #005542;
+  background-color: #FF5A09;
   padding-right: .95rem;
 }
 
 #search-button-li {
   padding-right: 1rem;
   padding-bottom: 1.05rem;
+  color: #F0F0F0;
 }
 
 #search-form {
@@ -258,12 +271,13 @@ ul {
  top:1px;
 }
 
-#review-body{
+.review-body{
   padding-bottom: 0.5rem;
+  color: black;
 }
 
 #twitter-link{
-  padding-top: 0.25rem;
+  padding-top: 0.5rem;
   padding-left: 57rem;
 }
 /*#fff200
